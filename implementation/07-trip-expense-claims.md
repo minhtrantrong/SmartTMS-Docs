@@ -43,6 +43,19 @@ Implement the first half of step `6.1` by giving drivers a formal way to submit 
 - `POST /api/trip-expense-claims/:id/attachments`
 - `GET /api/trip-expense-claims/my`
 
+## Implemented workflow
+
+- The backend now treats a trip expense claim as one claim per shipment and driver, enforced by a unique database constraint.
+- Drivers can work in `DRAFT` and `REJECTED` states, upload receipts per line item, and submit only when every line has at least one attachment.
+- Reviewer workflow supports `UNDER_REVIEW`, `APPROVED`, `REJECTED`, and `POSTED` through a dedicated review endpoint.
+- Operation-journal events are emitted for create, update, resubmission, review transitions, and receipt uploads.
+
+Additional implemented endpoints:
+
+- `GET /api/trip-expense-claims/:id/events`
+- `PATCH /api/trip-expense-claims/:id/review`
+- `GET /api/trip-expense-claims/:id/attachments/:attachmentId/download`
+
 ## Frontend implementation
 
 - Add review screens for dispatcher, manager, or accountant users depending on the approved ownership model.
@@ -60,6 +73,12 @@ Implement the first half of step `6.1` by giving drivers a formal way to submit 
 - Document valid expense categories and required evidence rules.
 - Document whether a claim is per shipment, per dispatch order, or per trip segment. Recommended default: one claim per shipment or dispatch order.
 
+## Documented decisions
+
+- Valid expense categories: `FUEL`, `TOLL`, `PARKING`, `MEAL`, `REPAIR`, `HELPER`, `OTHER`.
+- Evidence rule: every expense item must include at least one receipt attachment before the claim can be submitted.
+- Claim granularity: the implemented default is one claim per shipment and driver.
+
 ## Acceptance criteria
 
 - Drivers can create and submit expense claims with itemized amounts and receipt evidence.
@@ -69,9 +88,9 @@ Implement the first half of step `6.1` by giving drivers a formal way to submit 
 
 ## Implementation checklist
 
-- [ ] Create expense-claim migrations and models.
-- [ ] Add item, attachment, and total-recalculation logic.
-- [ ] Add submission endpoints and validation.
-- [ ] Add FE reviewer screens.
-- [ ] Add Mobile driver submission flow.
-- [ ] Add tests for totals, validation, and journal emission.
+- [x] Create expense-claim migrations and models.
+- [x] Add item, attachment, and total-recalculation logic.
+- [x] Add submission endpoints and validation.
+- [x] Add FE reviewer screens.
+- [x] Add Mobile driver submission flow.
+- [x] Add tests for totals, validation, and journal emission.

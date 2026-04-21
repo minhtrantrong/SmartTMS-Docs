@@ -67,6 +67,34 @@ Introduce a `dispatch_orders` domain linked to `shipments`. An order request bec
 - Document the relationship among order request, shipment, and dispatch order.
 - Document when dispatcher edits should happen on the dispatch order instead of directly on the shipment.
 
+## Relationship model
+
+- `order_requests` captures customer demand intake and approval history.
+- `shipments` captures the transport commitment and the physical delivery lifecycle.
+- `dispatch_orders` captures the operational assignment and execution workflow for a shipment.
+
+In practical terms:
+
+1. Customer service confirms an order request.
+2. Operations convert that request into a shipment.
+3. Dispatch creates a dispatch order for the shipment.
+4. Driver and vehicle assignment, driver acknowledgment, execution start, and operational cancellation happen on the dispatch order.
+5. Shipment assignment fields stay synchronized from the dispatch order so shipment views remain useful, but shipment APIs are no longer the authoritative assignment entry point.
+
+## Dispatcher edit rules
+
+- Use shipment create and edit flows for shipment data such as addresses, cargo, schedule, pricing, and route information.
+- Use dispatch-order actions for assigning or reassigning drivers and vehicles.
+- Use dispatch-order actions to move work into explicit `ASSIGNED`, `ACKNOWLEDGED`, `IN_EXECUTION`, `COMPLETED`, or `CANCELLED` operational states.
+- Use shipment driver actions to continue the physical-delivery lifecycle (`PICKED_UP`, `IN_TRANSIT`, `DELIVERED`) once dispatch execution has started.
+
+## Implementation status
+
+- Backend now exposes `/api/dispatch-orders` create, list, get, assign, acknowledge, start, complete, cancel, and `my` endpoints.
+- Dispatch-order lifecycle changes emit operation-journal events under the `DISPATCH_ORDER` entity type.
+- FE now includes a dispatcher dispatch-orders workspace and shipment links into that workflow.
+- Mobile now surfaces the current dispatch order separately on the driver dashboard and supports explicit driver acknowledgment in a dedicated detail screen.
+
 ## Acceptance criteria
 
 - Assignment actions happen through explicit dispatch-order endpoints.
@@ -76,9 +104,9 @@ Introduce a `dispatch_orders` domain linked to `shipments`. An order request bec
 
 ## Implementation checklist
 
-- [ ] Create `dispatch_orders` migration and model.
-- [ ] Add assignment and acknowledgment service logic.
-- [ ] Synchronize shipment assignment fields from dispatch actions.
-- [ ] Add FE dispatch-order workspace.
-- [ ] Add Mobile dispatch acknowledgment flow.
-- [ ] Add journal and transition tests.
+- [x] Create `dispatch_orders` migration and model.
+- [x] Add assignment and acknowledgment service logic.
+- [x] Synchronize shipment assignment fields from dispatch actions.
+- [x] Add FE dispatch-order workspace.
+- [x] Add Mobile dispatch acknowledgment flow.
+- [x] Add journal and transition tests.
