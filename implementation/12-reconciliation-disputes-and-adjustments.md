@@ -1,5 +1,9 @@
 # Task 12 - Reconciliation Disputes and Adjustments
 
+## Status
+
+Implemented across backend and frontend. Mobile remains intentionally out of scope.
+
 ## Objective
 
 Implement step `9` by adding a formal reconciliation workflow for quantity mismatches, missing documents, disputed charges, and approved adjustments.
@@ -61,6 +65,57 @@ Implement step `9` by adding a formal reconciliation workflow for quantity misma
 - Document allowed dispute types and who can approve an adjustment.
 - Document whether reconciliation is required for all statements or only for disputed accounts.
 
+## Implemented workflow
+
+- Backend now models formal statement disputes through `customer_reconciliations` and `reconciliation_adjustments`.
+- Reconciliation cases are opened against a delivered statement and automatically move the linked statement into `DISPUTED` status.
+- Adjustment proposals are stored separately from statement items until an accountant-approved or manager-approved decision is recorded.
+- Resolving a reconciliation applies only approved adjustments back to the statement and returns the statement to `SENT` or `ACKNOWLEDGED` state depending on whether customer acknowledgement had already been recorded.
+- Unresolved reconciliation cases now block statement closure, which is the current invoice-ready proxy until a dedicated invoice domain exists.
+
+## Implemented API surface
+
+- `POST /api/reconciliations`
+- `GET /api/reconciliations`
+- `GET /api/reconciliations/:id`
+- `GET /api/reconciliations/:id/events`
+- `POST /api/reconciliations/:id/adjustments`
+- `POST /api/reconciliations/:id/adjustments/:adjustmentId/approve`
+- `POST /api/reconciliations/:id/adjustments/:adjustmentId/reject`
+- `POST /api/reconciliations/:id/resolve`
+- `POST /api/reconciliations/:id/escalate`
+
+Customers, customer service, accountants, managers, and admins use the same reconciliation API. Customer access is automatically scoped to reconciliations belonging to the authenticated customer account.
+
+## Frontend surfaces
+
+- Customer portal now has a dedicated reconciliation workspace at `/customer/reconciliation`.
+- Customer statement detail now includes a direct action into the reconciliation workspace for dispute opening.
+- Customer service has an internal reconciliation queue at `/customer-service/reconciliation` for intake, proposal capture, escalation, and assisted resolution work.
+- Accountants have an internal reconciliation queue at `/accountant/reconciliation` for proposal review, approval/rejection, and final financial resolution.
+- Admins and managers have an oversight queue at `/admin/reconciliation` for escalations and exception handling.
+- Reconciliation detail views show the disputed statement, statement items, packaged supporting documents, explicit adjustment proposals, and the operation-journal timeline in one place.
+
+## Allowed dispute types
+
+- `DISPUTED_CHARGE`
+- `QUANTITY_MISMATCH`
+- `MISSING_DOCUMENT`
+- `OTHER`
+
+## Adjustment approval ownership
+
+- `ACCOUNTANT` can approve or reject adjustment proposals.
+- `MANAGER` and `ADMIN` can also approve or reject adjustment proposals for oversight and exception handling.
+- `CUSTOMER_SERVICE` can open cases, propose adjustments, escalate cases, and resolve non-financial coordination work, but cannot approve or reject adjustment values.
+- `CUSTOMER` can open cases and add proposal context only for their own statements.
+
+## Reconciliation requirement policy
+
+- Reconciliation is not required for every statement.
+- Reconciliation is only required for statements that have an active dispute case.
+- Because invoice generation is still not implemented, the current downstream guard is statement closure: a statement cannot be closed while any linked reconciliation case remains unresolved.
+
 ## Acceptance criteria
 
 - Customers or internal teams can open a reconciliation case against a statement.
@@ -68,10 +123,18 @@ Implement step `9` by adding a formal reconciliation workflow for quantity misma
 - Reconciliation cases have auditable lifecycle states until closure.
 - Invoice generation can exclude unresolved reconciliation cases.
 
+All acceptance criteria are implemented.
+
+## Validation
+
+- Backend focused validation passed with `go test ./internal/reconciliationtests`.
+- Frontend reconciliation files are clean in VS Code diagnostics.
+- Full frontend `npx tsc --noEmit` still reports the pre-existing unrelated error in `src/app/api/proxy/route.ts` due duplicate `headers` declarations; the new reconciliation files did not introduce additional TypeScript errors.
+
 ## Implementation checklist
 
-- [ ] Create reconciliation and adjustment migrations.
-- [ ] Add dispute and resolution services.
-- [ ] Add FE reconciliation queue and detail screens.
-- [ ] Add rules to block downstream invoicing for unresolved cases.
-- [ ] Add tests for dispute, adjustment, resolve, and escalate flows.
+- [x] Create reconciliation and adjustment migrations.
+- [x] Add dispute and resolution services.
+- [x] Add FE reconciliation queue and detail screens.
+- [x] Add rules to block downstream invoicing for unresolved cases.
+- [x] Add tests for dispute, adjustment, resolve, and escalate flows.

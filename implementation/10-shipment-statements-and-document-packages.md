@@ -63,6 +63,15 @@ Implement step `7` by creating the statement package that groups shipment quanti
 - Document statement eligibility rules, required evidence, and statement numbering format.
 - Document how statement totals relate to later invoice generation.
 
+## Implemented rules
+
+- Eligibility now uses customer-scoped shipments that are already `DELIVERED`, have an `actual_delivery_date` inside the selected reporting period, are not already referenced by another statement package, and have at least one linked `shipment_bills` record.
+- Statement numbers follow the runtime format `STM-YYYYMMDD-HHMMSS-######` using the shared backend document-number pattern.
+- Generated statement items include informational quantity rows plus accounting charge rows. The statement `subtotal_amount` is the sum of charge rows only, `adjustment_amount` is header-level, and `total_amount = subtotal_amount + adjustment_amount`.
+- Statement documents are currently generated from existing shipment bill evidence. Each linked shipment bill becomes a `statement_documents` row with document type `SHIPMENT_BILL`, display ordering, and OCR payload available through the referenced bill record.
+- Statement progression beyond `GENERATED` is blocked when any linked shipment lacks packaged bill evidence. The FE review workspace surfaces those gaps before users try to send or close the statement.
+- Invoice generation is still out of scope. Statement items reserve `invoice_line_reference` for later invoice linkage without coupling the new statement domain to invoices today.
+
 ## Acceptance criteria
 
 - Internal users can generate a statement package for eligible shipments.
@@ -72,9 +81,9 @@ Implement step `7` by creating the statement package that groups shipment quanti
 
 ## Implementation checklist
 
-- [ ] Create statement migrations and models.
-- [ ] Add statement-generation service.
-- [ ] Link shipment evidence into statement documents.
-- [ ] Add FE generation and review screens.
-- [ ] Add eligibility and evidence validation.
-- [ ] Add tests for statement totals and document completeness.
+- [x] Create statement migrations and models.
+- [x] Add statement-generation service.
+- [x] Link shipment evidence into statement documents.
+- [x] Add FE generation and review screens.
+- [x] Add eligibility and evidence validation.
+- [x] Add tests for statement totals and document completeness.

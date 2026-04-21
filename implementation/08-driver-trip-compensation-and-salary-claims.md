@@ -52,6 +52,25 @@ Implement the second half of step `6.1` by creating a dedicated workflow for tri
 - Document which parts of compensation are driver-entered and which are policy-derived.
 - Document whether compensation claims are mandatory before trip closure or optional for certain trip types.
 
+## Implemented behavior
+
+- Backend routes now live under `/api/driver-trip-compensation` with driver draft/create/update/submit actions, reviewer list/detail/review actions, and operation-journal timeline support.
+- Driver compensation is stored separately from trip expense reimbursement and uses a header-level amount breakdown for base trip pay, allowance, overtime, bonus, deduction, claimed total, and approved total.
+- Review screens are implemented separately from expense reimbursement so labor compensation review does not mix with operational spend review.
+- Mobile now includes a dedicated driver compensation workspace with create, edit, submit, and review-result visibility.
+
+## Compensation data ownership
+
+- Driver-entered in this task: `base_trip_amount`, `allowance_amount`, `overtime_amount`, `bonus_amount`, `deduction_amount`, and `compensation_note`.
+- Reviewer-entered in this task: `approved_total` and `review_note` during approval/rejection/posting.
+- Policy-derived fields are not auto-calculated yet in Task 08. The claim stores the driver-submitted package first, and reviewers can adjust the approved total until later policy automation is introduced.
+
+## Trip-closure policy
+
+- Compensation claims are optional in the current implementation.
+- Drivers can create compensation claims for their assigned non-cancelled trips; mobile surfaces the workflow for active or delivered trips without making it a prerequisite for trip closure.
+- This keeps compensation capture independent from shipment master data and payroll-close logic, as required by the task.
+
 ## Acceptance criteria
 
 - Drivers can submit compensation claims without overloading shipment master data.
@@ -60,8 +79,8 @@ Implement the second half of step `6.1` by creating a dedicated workflow for tri
 
 ## Implementation checklist
 
-- [ ] Create compensation migration and model.
-- [ ] Add claim submission and validation endpoints.
-- [ ] Add FE review screens.
-- [ ] Add Mobile submission screen.
-- [ ] Add journal emission and transition tests.
+- [x] Create compensation migration and model.
+- [x] Add claim submission and validation endpoints.
+- [x] Add FE review screens.
+- [x] Add Mobile submission screen.
+- [x] Add journal emission and transition tests.
