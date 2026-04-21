@@ -1,7 +1,8 @@
 # SmartTMS Multi-Repo Development Guide
 
-This document is the workspace-level development instruction for the SmartTMS multi-repo project.
-It is written for local development on Windows with PowerShell.
+# Introduction - Operation Procedure
+
+![Operation Procedure](operation_procedure.png)
 
 ## 1. Repository Map
 
