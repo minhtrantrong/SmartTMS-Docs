@@ -2,3 +2,6 @@
 *.xlsx
 *.jpg
 temp/
+implementation/
+test/
+logs/
