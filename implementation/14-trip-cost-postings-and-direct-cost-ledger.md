@@ -52,6 +52,21 @@ Implement the accounting side of step `12` by turning approved trip expense and 
 - Document which approved source types create direct-cost postings.
 - Document reversal and correction policy.
 
+## Implemented posting policy
+
+- `TRIP_EXPENSE_CLAIM` creates one direct-cost posting per approved claim.
+- Expense-claim postings use the approved claim total, keep shipment/driver linkage, and derive `cost_category` from the claim items.
+- If all expense items share one category, that category is used; mixed-category claims are posted as `MIXED_TRIP_EXPENSE`.
+- `DRIVER_TRIP_COMPENSATION` creates one direct-cost posting per approved compensation record.
+- Compensation postings use `approved_total` when available, otherwise `claimed_total`, and use `DRIVER_TRIP_COMPENSATION` as the ledger `cost_category`.
+
+## Reversal and correction policy
+
+- Reversal requires a reason and changes the posting status to `REVERSED`.
+- Reversal restores the originating source record from `POSTED` back to `APPROVED` so accounting can correct and repost it.
+- Duplicate active postings are prevented per source record; only one `POSTED` trip-cost posting can exist for a given source at a time.
+- Reposting a source after reversal is treated as a correction flow and is recorded with a correction journal event on the posting entity.
+
 ## Acceptance criteria
 
 - Approved claims can be converted into dedicated trip cost postings.

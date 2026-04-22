@@ -60,6 +60,13 @@ Implement step `10` by replacing shipment-total inference with a dedicated invoi
 - Document invoice numbering scheme, due-date rules, and source-of-truth relationship with statements.
 - Document whether tax is in scope now or should stay configurable for a later phase.
 
+## Implementation notes
+
+- Invoice numbers now use the runtime format `INV-YYYYMMDD-HHMMSS-######` so drafts and issued invoices share the same auditable sequence pattern.
+- Invoice drafts are generated from persisted statement charge lines plus any statement-level adjustment line, and issue actions recalculate those totals server-side from the current statement output before the invoice moves to `ISSUED`.
+- Due dates default from the customer payment terms at generation and issue time: `NET_30` falls back to 30 days, `NET_60` uses 60 days, and `COD` / `PREPAID` use the same day unless finance overrides the due date explicitly.
+- Tax is stored on invoice headers and lines but remains `0` in this phase so tax policy can stay configurable in a later accounting phase without changing the invoice domain shape.
+
 ## Acceptance criteria
 
 - Invoices are persisted in dedicated tables and not inferred from shipment totals.
@@ -69,8 +76,8 @@ Implement step `10` by replacing shipment-total inference with a dedicated invoi
 
 ## Implementation checklist
 
-- [ ] Create invoice migrations and models.
-- [ ] Add invoice-generation and issue services.
-- [ ] Add FE accountant invoice workspace.
-- [ ] Add validation to prevent invoicing unresolved reconciliations.
-- [ ] Add tests for generation, issue, void, and amount recalculation.
+- [x] Create invoice migrations and models.
+- [x] Add invoice-generation and issue services.
+- [x] Add FE accountant invoice workspace.
+- [x] Add validation to prevent invoicing unresolved reconciliations.
+- [x] Add tests for generation, issue, void, and amount recalculation.
