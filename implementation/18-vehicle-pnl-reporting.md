@@ -56,6 +56,22 @@ Implement step `14` by combining vehicle revenue, direct trip costs, and fixed-c
 - Document the PnL formula and period treatment rules.
 - Document how negative revenue or reversal postings affect the report.
 
+## Implementation notes
+
+- P&L formula:
+  - `revenue_total = attributed invoice charge revenue + attributed statement adjustment revenue`
+  - `gross_margin = revenue_total - direct_cost_total`
+  - `net_contribution = gross_margin - fixed_cost_allocated`
+- Period treatment rules:
+  - Revenue is included by `invoices.issue_date`.
+  - Direct trip costs are included by `trip_cost_postings.posting_date`.
+  - Fixed costs are included from `cost_allocations` whose allocation period is fully inside the selected report range.
+- Reversal and negative-value treatment:
+  - Negative statement adjustments reduce `revenue_total` through the same attribution logic used in vehicle revenue reporting.
+  - Reversed trip cost postings are excluded because the P&L report reads active direct-cost ledger rows only (`POSTED`).
+  - Reversed fixed-cost allocations are excluded because the report reads active allocation rows only (`ALLOCATED`).
+  - Any active negative ledger row still flows through the report as a signed value and therefore reduces the corresponding subtotal.
+
 ## Acceptance criteria
 
 - Users can view vehicle PnL by period.
@@ -64,7 +80,7 @@ Implement step `14` by combining vehicle revenue, direct trip costs, and fixed-c
 
 ## Implementation checklist
 
-- [ ] Implement vehicle PnL aggregation query or view.
-- [ ] Add filtered PnL endpoints.
-- [ ] Add FE PnL page with drill-down and export.
-- [ ] Add reconciliation tests for revenue, direct cost, and fixed-cost totals.
+- [x] Implement vehicle PnL aggregation query or view.
+- [x] Add filtered PnL endpoints.
+- [x] Add FE PnL page with drill-down and export.
+- [x] Add reconciliation tests for revenue, direct cost, and fixed-cost totals.

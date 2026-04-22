@@ -331,14 +331,32 @@ Useful repo-specific checks:
 cd D:\Tony_learn_to_code\SmartTMS\SmartTMS-BE
 go test ./...
 
+# Backend Task 19 RBAC regression
+go test ./internal/middleware -run "^TestRequireRole_" -count=1
+
+# Backend Task 19 order-request workflow regression
+go test .\internal\service\order_request_service.go .\internal\service\shipment_service.go .\internal\service\shipment_workflow.go .\internal\service\shipment_journal.go .\internal\service\operation_journal_service.go .\internal\service\order_request_service_test.go -run "^TestOrderRequestService_" -count=1
+
 # Frontend lint
 cd D:\Tony_learn_to_code\SmartTMS\SmartTMS-FE
 npm run lint
 
+# Frontend Task 19 route/workflow regression
+npm run test -- src/lib/routePermissions.test.ts src/lib/workflows.test.ts
+
 # Mobile tests
 cd D:\Tony_learn_to_code\SmartTMS\SmartTMS-Mobile
 flutter test
+
+# Mobile Task 19 role-routing regression
+flutter test test/task19_navigation_access_test.dart
 ```
+
+Task 19 notes:
+
+- Backend migration `000017_task19_hardening_backfills` seeds default allocation rules and reconstructs missing approval-request links for historical trip cost workflows.
+- Package-wide `go test ./internal/service` is currently blocked by the existing compile mismatch in `SmartTMS-BE\internal\service\user_service_test.go`.
+- `flutter` must be on `PATH` to execute the focused mobile regression command.
 
 ## 11. Troubleshooting
 
