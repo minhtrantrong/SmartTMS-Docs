@@ -1,10 +1,10 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0">
   <diagram id="quy_trinh_van_hanh" name="Quy trình vận hành SmartTMS">
-    <mxGraphModel dx="3660" dy="2344" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="3185" dy="2080" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="lane_container" parent="1" style="swimlane;whiteSpace=wrap;html=1;startSize=40;horizontal=1;container=0;collapsible=0;recursiveResize=0;expand=0;fontSize=24;fontStyle=1;strokeWidth=2;shadow=1;strokeColor=#80FF00;" value="Quy trình điều hành" vertex="1">
+        <mxCell id="lane_container" parent="1" style="swimlane;whiteSpace=wrap;html=1;startSize=40;horizontal=1;container=0;collapsible=0;recursiveResize=0;expand=0;fontSize=24;fontStyle=1;strokeWidth=2;shadow=1;strokeColor=#80FF00;fillColor=none;" value="Quy trình điều hành" vertex="1">
           <mxGeometry height="1009" width="1408" x="-1462" y="-1025" as="geometry" />
         </mxCell>
         <mxCell id="lane_kh" parent="1" style="swimlane;whiteSpace=wrap;html=1;startSize=40;horizontal=1;container=1;collapsible=0;recursiveResize=0;expand=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=18;fontStyle=1;shadow=1;" value="Khách hàng" vertex="1">
@@ -109,8 +109,13 @@
         <mxCell id="step_6_2" parent="lane_dh" style="rhombus;whiteSpace=wrap;html=1;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;fontColor=default;shadow=1;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;6.2 Duyệt chi phí,&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;lương chuyến&lt;/font&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="140" width="277" x="51" y="558" as="geometry" />
         </mxCell>
-        <mxCell id="edge_2_to_4" edge="1" parent="lane_dh" source="step_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;shadow=1;" target="step_4">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="edge_2_to_4" edge="1" parent="lane_dh" source="step_2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;shadow=1;strokeColor=#82b366;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;fillColor=#d5e8d4;" target="step_4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="134" />
+              <mxPoint x="200" y="134" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="12k_bqc1ADg10g3HNjH4-4" edge="1" parent="lane_dh" style="endArrow=none;html=1;rounded=0;shadow=1;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
@@ -147,12 +152,17 @@
             <mxPoint x="-942" y="-300" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="gxAAZFISIvo_xDKxlOIl-3" connectable="0" parent="12k_bqc1ADg10g3HNjH4-20" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1;fontColor=#FF7D16;labelBackgroundColor=none;" value="Duyệt" vertex="1">
+          <mxGeometry relative="1" x="-0.2615" y="-1" as="geometry">
+            <mxPoint x="13" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="12k_bqc1ADg10g3HNjH4-21" edge="1" parent="1" source="step_6_1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;strokeColor=#80FF00;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=18;fontColor=#151515;labelBackgroundColor=default;endArrow=classic;fontStyle=1;horizontal=1;startSize=40;fillColor=#fff2cc;endSize=4;" target="step_6_2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="AELks3aUIM3jZHgyOB3u-5" connectable="0" parent="12k_bqc1ADg10g3HNjH4-21" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;span style=&quot;color: rgb(255, 51, 51); font-size: 18px; background-color: rgb(236, 236, 236);&quot;&gt;Không Duyệt&lt;/span&gt;" vertex="1">
-          <mxGeometry relative="1" x="-0.2103" as="geometry">
-            <mxPoint as="offset" />
+        <mxCell id="gxAAZFISIvo_xDKxlOIl-1" connectable="0" parent="12k_bqc1ADg10g3HNjH4-21" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];" value="&#xa;" vertex="1">
+          <mxGeometry relative="1" x="-0.1144" y="-2" as="geometry">
+            <mxPoint x="-3" y="-13" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="12k_bqc1ADg10g3HNjH4-18" edge="1" parent="1" source="step_4" style="endArrow=classic;html=1;rounded=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;shadow=1;strokeColor=#82b366;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;fillColor=#d5e8d4;" target="step_5" value="">
@@ -164,7 +174,7 @@
         <mxCell id="12k_bqc1ADg10g3HNjH4-22" edge="1" parent="1" source="step_6_2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shadow=1;strokeColor=#82b366;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;fillColor=#d5e8d4;curved=0;" target="step_6_1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="AELks3aUIM3jZHgyOB3u-4" connectable="0" parent="12k_bqc1ADg10g3HNjH4-22" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;div&gt;&lt;span style=&quot;color: rgb(255, 51, 51); font-size: 18px; background-color: rgb(236, 236, 236);&quot;&gt;Duyệt&lt;/span&gt;&lt;/div&gt;" vertex="1">
+        <mxCell id="AELks3aUIM3jZHgyOB3u-4" connectable="0" parent="12k_bqc1ADg10g3HNjH4-22" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;div&gt;&lt;span style=&quot;color: rgb(255, 51, 51); font-size: 18px; background-color: rgb(236, 236, 236);&quot;&gt;Không Duyệt&lt;/span&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry relative="1" x="-0.2845" y="-3" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
