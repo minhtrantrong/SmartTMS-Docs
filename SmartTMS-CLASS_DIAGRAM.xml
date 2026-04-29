@@ -1,0 +1,253 @@
+<mxfile host="app.diagrams.net" agent="GitHub Copilot">
+  <diagram id="smarttms-class-diagram" name="SmartTMS Class Diagram">
+    <mxGraphModel dx="2271" dy="1217" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1700" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="class_user" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;User&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+Username: string&lt;br/&gt;+Email: string&lt;br/&gt;+Role: UserRole&lt;br/&gt;+IsActive: bool&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="139" x="-270" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="class_permission" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;Permission&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+Name: string&lt;br/&gt;+Resource: string&lt;br/&gt;+Action: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="126" width="139" x="-503" y="384" as="geometry" />
+        </mxCell>
+        <mxCell id="class_role_permission" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;RolePermission&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+Role: UserRole&lt;br/&gt;+PermissionID: uint64&lt;br/&gt;+CreatedAt: time.Time&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="111" width="148" x="-293" y="399" as="geometry" />
+        </mxCell>
+        <mxCell id="class_driver" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;Driver&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+UserID: uint64&lt;br/&gt;+LicenseNumber: string&lt;br/&gt;+CurrentStatus: DriverStatus&lt;br/&gt;+IsActive: bool&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="181" x="-10" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="class_driver_status_update" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;DriverStatusUpdate&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+DriverID: uint64&lt;br/&gt;+Status: DriverStatus&lt;br/&gt;+ReportedAt: time.Time&lt;br/&gt;+ReportedByUserID: uint64&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="175" x="-7" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="class_vehicle" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;Vehicle&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+VehicleNumber: string&lt;br/&gt;+LicensePlate: string&lt;br/&gt;+Status: string&lt;br/&gt;+AssignedDriverId: uint64?&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="172" x="814" y="1173" as="geometry" />
+        </mxCell>
+        <mxCell id="class_customer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;Customer&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+CustomerCode: string&lt;br/&gt;+CompanyName: string&lt;br/&gt;+Email: string&lt;br/&gt;+IsActive: bool&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="154" x="5.5" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="class_order_request" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;OrderRequest&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+OrderNumber: string&lt;br/&gt;+CustomerID: uint64&lt;br/&gt;+Status: string&lt;br/&gt;+ConvertedShipmentID: uint64?&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="199" x="-304" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="class_route" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;Route&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+RouteCode: string&lt;br/&gt;+RouteName: string&lt;br/&gt;+OriginAddress: string&lt;br/&gt;+DestinationAddress: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="175" x="-299" y="234" as="geometry" />
+        </mxCell>
+        <mxCell id="class_shipment" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;Shipment&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+ShipmentNumber: string&lt;br/&gt;+CustomerID: uint64&lt;br/&gt;+ShipmentStatus: string&lt;br/&gt;+ScheduledPickupDate: time.Time&lt;br/&gt;+ScheduledDeliveryDate: time.Time&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="219" x="11" y="297" as="geometry" />
+        </mxCell>
+        <mxCell id="class_dispatch_order" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;DispatchOrder&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+DispatchNumber: string&lt;br/&gt;+ShipmentID: uint64&lt;br/&gt;+Status: string&lt;br/&gt;+AssignedDriverID: uint64?&lt;br/&gt;+AssignedVehicleID: uint64?&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="181" x="592" y="53" as="geometry" />
+        </mxCell>
+        <mxCell id="class_shipment_bill" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;ShipmentBill&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+ShipmentID: uint64&lt;br/&gt;+UploadedBy: uint64&lt;br/&gt;+OriginalFilename: string&lt;br/&gt;+OcrData: JSONB&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="161" x="238" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="class_trip_expense_claim" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;TripExpenseClaim&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+ClaimNumber: string&lt;br/&gt;+ShipmentID: uint64&lt;br/&gt;+DriverID: uint64&lt;br/&gt;+Status: string&lt;br/&gt;+TotalAmount: float64&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="144" x="-251" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="class_trip_expense_item" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;TripExpenseItem&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+ClaimID: uint64&lt;br/&gt;+Category: string&lt;br/&gt;+Amount: float64&lt;br/&gt;+ExpenseDate: time.Time&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="166" x="597" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="class_trip_expense_attachment" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;TripExpenseAttachment&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+ClaimID: uint64&lt;br/&gt;+ItemID: uint64&lt;br/&gt;+OriginalFilename: string&lt;br/&gt;+StoragePath: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="165" x="598" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="class_driver_trip_compensation" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;DriverTripCompensation&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+CompensationNumber: string&lt;br/&gt;+ShipmentID: uint64&lt;br/&gt;+DriverID: uint64&lt;br/&gt;+Status: string&lt;br/&gt;+ClaimedTotal: float64&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="191" x="585" y="573" as="geometry" />
+        </mxCell>
+        <mxCell id="class_approval_request" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;ApprovalRequest&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+EntityType: string&lt;br/&gt;+EntityID: uint64&lt;br/&gt;+Status: string&lt;br/&gt;+CurrentAssigneeRole: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="185" x="588" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="class_approval_action" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;ApprovalAction&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+ApprovalRequestID: uint64&lt;br/&gt;+Action: string&lt;br/&gt;+ActorUserID: uint64?&lt;br/&gt;+CreatedAt: time.Time&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="178" x="591" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="class_trip_cost_posting" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;TripCostPosting&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+PostingNumber: string&lt;br/&gt;+ShipmentID: uint64&lt;br/&gt;+Status: string&lt;br/&gt;+Amount: float64&lt;br/&gt;+Currency: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="153" x="406" y="-98" as="geometry" />
+        </mxCell>
+        <mxCell id="class_fixed_cost" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;FixedCost&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+CostNumber: string&lt;br/&gt;+CostPeriod: time.Time&lt;br/&gt;+Category: string&lt;br/&gt;+Amount: float64&lt;br/&gt;+Status: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="153" x="864" y="213" as="geometry" />
+        </mxCell>
+        <mxCell id="class_allocation_rule" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;AllocationRule&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+RuleName: string&lt;br/&gt;+RuleBasis: string&lt;br/&gt;+TargetScope: string&lt;br/&gt;+IsActive: bool&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="139" x="871" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="class_allocation_run" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;AllocationRun&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+RunNumber: string&lt;br/&gt;+AllocationRuleID: uint64&lt;br/&gt;+PeriodStart: time.Time&lt;br/&gt;+PeriodEnd: time.Time&lt;br/&gt;+Status: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="163" x="859" y="573" as="geometry" />
+        </mxCell>
+        <mxCell id="class_cost_allocation" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;CostAllocation&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+AllocationRunID: uint64&lt;br/&gt;+FixedCostID: uint64&lt;br/&gt;+VehicleID: uint64&lt;br/&gt;+AllocatedAmount: float64&lt;br/&gt;+Status: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="240" x="820" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="class_shipment_statement" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;ShipmentStatement&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+StatementNumber: string&lt;br/&gt;+CustomerID: uint64&lt;br/&gt;+PeriodStart: time.Time&lt;br/&gt;+PeriodEnd: time.Time&lt;br/&gt;+Status: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="168" x="31" y="-206" as="geometry" />
+        </mxCell>
+        <mxCell id="class_statement_item" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;StatementItem&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+StatementID: uint64&lt;br/&gt;+ItemType: string&lt;br/&gt;+ShipmentID: uint64&lt;br/&gt;+LineAmount: float64&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="141" x="1157" y="-282" as="geometry" />
+        </mxCell>
+        <mxCell id="class_statement_document" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;StatementDocument&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+StatementID: uint64&lt;br/&gt;+DocumentType: string&lt;br/&gt;+DisplayName: string&lt;br/&gt;+DocumentReference: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="181" x="1120" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="class_customer_reconciliation" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;CustomerReconciliation&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+ReconciliationNumber: string&lt;br/&gt;+StatementID: uint64&lt;br/&gt;+CustomerID: uint64&lt;br/&gt;+Status: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="188" x="1116" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="class_reconciliation_adjustment" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;ReconciliationAdjustment&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+ReconciliationID: uint64&lt;br/&gt;+StatementID: uint64&lt;br/&gt;+AdjustmentType: string&lt;br/&gt;+ProposedValue: float64&lt;br/&gt;+Status: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="176" x="1122" y="753" as="geometry" />
+        </mxCell>
+        <mxCell id="class_invoice" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;Invoice&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+InvoiceNumber: string&lt;br/&gt;+CustomerID: uint64&lt;br/&gt;+StatementID: uint64&lt;br/&gt;+Status: string&lt;br/&gt;+TotalAmount: float64&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="151" x="1135" y="933" as="geometry" />
+        </mxCell>
+        <mxCell id="VK4cYU6wfOtKZ32LIkbV-1" edge="1" parent="1" source="class_invoice_line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="class_invoice" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="class_invoice_line" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;InvoiceLine&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+InvoiceID: uint64&lt;br/&gt;+Description: string&lt;br/&gt;+Quantity: float64&lt;br/&gt;+LineAmount: float64&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="141" x="1140" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="class_payment" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;Payment&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+PaymentNumber: string&lt;br/&gt;+InvoiceID: uint64&lt;br/&gt;+Amount: float64&lt;br/&gt;+Status: string&lt;br/&gt;+PaymentMethod: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="140" width="145" x="1287" y="1288" as="geometry" />
+        </mxCell>
+        <mxCell id="class_operation_journal" parent="1" style="rounded=0;whiteSpace=wrap;html=1;autosize=1;fillColor=none;strokeColor=none;strokeWidth=0;fontColor=#1d4255;" value="&lt;table border=&#39;1&#39; cellpadding=&#39;4&#39; cellspacing=&#39;0&#39; style=&#39;border-collapse:collapse;&#39;&gt;&lt;tr&gt;&lt;td align=&#39;center&#39;&gt;&lt;b&gt;OperationJournalEntry&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+ID: uint64&lt;br/&gt;+EntityType: string&lt;br/&gt;+EntityID: uint64&lt;br/&gt;+EventCode: string&lt;br/&gt;+OccurredAt: time.Time&lt;br/&gt;+Source: string&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&#39;left&#39;&gt;+TableName(): string&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="154" width="158" x="1131" y="1473" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_role_permission" edge="1" parent="1" source="class_role_permission" style="endArrow=block;html=1;strokeColor=#6a3a7d;" target="class_permission" value="permission">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_user_driver" edge="1" parent="1" source="class_user" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_driver" value="profile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_driver_status" edge="1" parent="1" source="class_driver" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_driver_status_update" value="status history">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_customer_order_request" edge="1" parent="1" source="class_customer" style="endArrow=block;html=1;strokeColor=#2e7d32;" target="class_order_request" value="places">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_order_request_shipment" edge="1" parent="1" source="class_order_request" style="endArrow=block;html=1;strokeColor=#2e7d32;" target="class_shipment" value="converts to">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_customer_shipment" edge="1" parent="1" source="class_customer" style="endArrow=block;html=1;strokeColor=#2e7d32;" target="class_shipment" value="owns">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_route_shipment" edge="1" parent="1" source="class_route" style="endArrow=block;html=1;strokeColor=#2e7d32;" target="class_shipment" value="route">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_vehicle_shipment" edge="1" parent="1" source="class_vehicle" style="endArrow=block;html=1;strokeColor=#2e7d32;" target="class_shipment" value="assigned vehicle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_driver_shipment" edge="1" parent="1" source="class_driver" style="endArrow=block;html=1;strokeColor=#2e7d32;" target="class_shipment" value="assigned driver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_shipment_dispatch" edge="1" parent="1" source="class_shipment" style="endArrow=block;html=1;strokeColor=#2e7d32;" target="class_dispatch_order" value="dispatch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_shipment_bill" edge="1" parent="1" source="class_shipment" style="endArrow=block;html=1;strokeColor=#cc7a00;" target="class_shipment_bill" value="bill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_claim_shipment" edge="1" parent="1" source="class_trip_expense_claim" style="endArrow=block;html=1;strokeColor=#cc7a00;" target="class_shipment" value="shipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_claim_driver" edge="1" parent="1" source="class_trip_expense_claim" style="endArrow=block;html=1;strokeColor=#cc7a00;" target="class_driver" value="driver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_claim_approval" edge="1" parent="1" source="class_trip_expense_claim" style="endArrow=block;html=1;strokeColor=#6a3a7d;" target="class_approval_request" value="approval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_claim_item" edge="1" parent="1" source="class_trip_expense_claim" style="endArrow=block;html=1;strokeColor=#cc7a00;" target="class_trip_expense_item" value="items">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_item_attachment" edge="1" parent="1" source="class_trip_expense_item" style="endArrow=block;html=1;strokeColor=#cc7a00;" target="class_trip_expense_attachment" value="attachments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_comp_shipment" edge="1" parent="1" source="class_driver_trip_compensation" style="endArrow=block;html=1;strokeColor=#cc7a00;" target="class_shipment" value="shipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_comp_driver" edge="1" parent="1" source="class_driver_trip_compensation" style="endArrow=block;html=1;strokeColor=#cc7a00;" target="class_driver" value="driver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_comp_approval" edge="1" parent="1" source="class_driver_trip_compensation" style="endArrow=block;html=1;strokeColor=#6a3a7d;" target="class_approval_request" value="approval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_approval_actions" edge="1" parent="1" source="class_approval_request" style="endArrow=block;html=1;strokeColor=#6a3a7d;" target="class_approval_action" value="actions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_cost_shipment" edge="1" parent="1" source="class_trip_cost_posting" style="endArrow=block;html=1;strokeColor=#6b6b6b;" target="class_shipment" value="shipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_cost_dispatch" edge="1" parent="1" source="class_trip_cost_posting" style="endArrow=block;html=1;strokeColor=#6b6b6b;" target="class_dispatch_order" value="dispatch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_cost_vehicle" edge="1" parent="1" source="class_trip_cost_posting" style="endArrow=block;html=1;strokeColor=#6b6b6b;" target="class_vehicle" value="vehicle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_trip_cost_driver" edge="1" parent="1" source="class_trip_cost_posting" style="endArrow=block;html=1;strokeColor=#6b6b6b;" target="class_driver" value="driver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_rule_run" edge="1" parent="1" source="class_allocation_rule" style="endArrow=block;html=1;strokeColor=#6b6b6b;" target="class_allocation_run" value="runs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_rule_allocation" edge="1" parent="1" source="class_allocation_rule" style="endArrow=block;html=1;strokeColor=#6b6b6b;" target="class_cost_allocation" value="allocations">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_run_allocation" edge="1" parent="1" source="class_allocation_run" style="endArrow=block;html=1;strokeColor=#6b6b6b;" target="class_cost_allocation" value="allocations">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_fixed_allocation" edge="1" parent="1" source="class_fixed_cost" style="endArrow=block;html=1;strokeColor=#6b6b6b;" target="class_cost_allocation" value="allocated into">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_vehicle_allocation" edge="1" parent="1" source="class_vehicle" style="endArrow=block;html=1;strokeColor=#6b6b6b;" target="class_cost_allocation" value="allocated vehicle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_statement_customer" edge="1" parent="1" source="class_shipment_statement" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_customer" value="customer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_statement_items" edge="1" parent="1" source="class_shipment_statement" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_statement_item" value="items">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_statement_documents" edge="1" parent="1" source="class_shipment_statement" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_statement_document" value="documents">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_statement_item_shipment" edge="1" parent="1" source="class_statement_item" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_shipment" value="shipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_statement_item_dispatch" edge="1" parent="1" source="class_statement_item" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_dispatch_order" value="dispatch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_statement_doc_shipment" edge="1" parent="1" source="class_statement_document" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_shipment" value="shipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_statement_doc_bill" edge="1" parent="1" source="class_statement_document" style="endArrow=block;html=1;strokeColor=#cc7a00;" target="class_shipment_bill" value="bill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_recon_statement" edge="1" parent="1" source="class_customer_reconciliation" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_shipment_statement" value="statement">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_recon_customer" edge="1" parent="1" source="class_customer_reconciliation" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_customer" value="customer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_recon_adjustments" edge="1" parent="1" source="class_customer_reconciliation" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_reconciliation_adjustment" value="adjustments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adjustment_statement" edge="1" parent="1" source="class_reconciliation_adjustment" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_shipment_statement" value="statement">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adjustment_item" edge="1" parent="1" source="class_reconciliation_adjustment" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_statement_item" value="item">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_invoice_customer" edge="1" parent="1" source="class_invoice" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_customer" value="customer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_invoice_statement" edge="1" parent="1" source="class_invoice" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_shipment_statement" value="statement">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_invoice_lines" edge="1" parent="1" source="class_invoice" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_invoice_line" value="lines">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_invoice_payments" edge="1" parent="1" source="class_invoice" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_payment" value="payments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_invoice_line_shipment" edge="1" parent="1" source="class_invoice_line" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_shipment" value="shipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_invoice_line_item" edge="1" parent="1" source="class_invoice_line" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_statement_item" value="statement item">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_payment_invoice" edge="1" parent="1" source="class_payment" style="endArrow=block;html=1;strokeColor=#2a6f8f;" target="class_invoice" value="invoice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

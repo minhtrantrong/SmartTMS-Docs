@@ -1,0 +1,62 @@
+<mxfile host="app.diagrams.net" agent="GitHub Copilot">
+  <diagram id="smarttms-component-diagram" name="SmartTMS Component Diagram">
+    <mxGraphModel dx="1030" dy="572" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f1e6;strokeColor=#6b5b3a;fontColor=#3a2f1c;" value="Users" vertex="1">
+          <mxGeometry height="50" width="120" x="40" y="167" as="geometry" />
+        </mxCell>
+        <mxCell id="devices" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f1e6;strokeColor=#6b5b3a;fontColor=#3a2f1c;" value="Devices&#xa;(Web + Mobile)" vertex="1">
+          <mxGeometry height="60" width="120" x="40" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="fe" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f3f8;strokeColor=#2a6f8f;fontColor=#1d4255;" value="SmartTMS-FE&#xa;Next.js Admin Web" vertex="1">
+          <mxGeometry height="90" width="140" x="240" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="mobile" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f3f8;strokeColor=#2a6f8f;fontColor=#1d4255;" value="SmartTMS-Mobile&#xa;Flutter App" vertex="1">
+          <mxGeometry height="90" width="140" x="240" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="be" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f7ef;strokeColor=#2e7d32;fontColor=#1f4f24;" value="SmartTMS-BE&#xa;Go + Gin API" vertex="1">
+          <mxGeometry height="90" width="143" x="550" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="ai" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff4e5;strokeColor=#cc7a00;fontColor=#7a4a00;" value="SmartTMS-AI&#xa;FastAPI OCR" vertex="1">
+          <mxGeometry height="90" width="143" x="550" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#f3e6f8;strokeColor=#6a3a7d;fontColor=#4a2656;" value="PostgreSQL" vertex="1">
+          <mxGeometry height="100" width="140" x="770" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="files" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f1f1;strokeColor=#6b6b6b;fontColor=#333333;" value="Bill Files&#xa;(Uploads)" vertex="1">
+          <mxGeometry height="70" width="140" x="770" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" edge="1" parent="1" source="user" style="endArrow=block;html=1;strokeColor=#4a4a4a;" target="devices" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" edge="1" parent="1" source="devices" style="endArrow=block;html=1;strokeColor=#4a4a4a;" target="fe" value="HTTP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" edge="1" parent="1" source="devices" style="endArrow=block;html=1;strokeColor=#4a4a4a;" target="mobile" value="HTTP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" edge="1" parent="1" source="fe" style="endArrow=block;html=1;strokeColor=#2e7d32;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="be" value="REST + JWT + API Key">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="225" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" edge="1" parent="1" source="mobile" style="endArrow=block;html=1;strokeColor=#2e7d32;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="be" value="REST + JWT + API Key">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge6" edge="1" parent="1" source="be" style="endArrow=block;html=1;strokeColor=#cc7a00;" target="ai" value="OCR Request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" edge="1" parent="1" source="be" style="endArrow=block;html=1;strokeColor=#6a3a7d;" target="db" value="SQL">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" edge="1" parent="1" source="be" style="endArrow=block;html=1;strokeColor=#6b6b6b;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" target="files" value="Uploads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
